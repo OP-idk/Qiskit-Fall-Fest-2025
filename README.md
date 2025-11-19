@@ -1,5 +1,6 @@
 # Qiskit Fall Fest 2025 Submission
-My submission to the 2025 Qiskit Fall Fest Challenges\n
+My submission to the 2025 Qiskit Fall Fest Challenges
+
 Challenges completed:
 - Cryptography
 - Random Number Generator
