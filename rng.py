@@ -4,18 +4,22 @@ from qiskit.visualization import plot_histogram
 import numpy as np
 from math import pi
 
-num_outcomes = 129 
+num_outcomes = 128 
 n = int(np.ceil(np.log2(num_outcomes)))
 qc = QuantumCircuit(n, n)
 
 qc.h(range(n))
-qc.measure(range(n), range(n))
+x = qc.measure(range(n), range(n))
 
 sim = AerSimulator()
 result = sim.run(qc).result()
 counts = result.get_counts()
 plot_histogram(counts)
-#print(counts)
+
+
+# Note: I'm not good at stats, I think this still gives every valid value a 
+# chance to appear but I'm not 100% sure, either way it doesn't matter as long 
+# as the desired number of outcomes is a power of 2
 
 # First entry in counts array within the given range will be the result of the
 # first valid shot which will be random every time
@@ -29,6 +33,7 @@ for count in counts:
         break
     print("    Invalid Generation: " + str(count) + " | " + str(temp_int))
 
+print("Desired Outcomes: " + str(num_outcomes))
 print("Range: 0 to " + str(num_outcomes - 1))
 print("Num Qubits: " + str(n))
 print("Actual range: 0 to " + str((2 ** n) - 1))
