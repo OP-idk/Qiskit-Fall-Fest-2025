@@ -8,9 +8,9 @@ from enum import Enum
 import random as rng
 
 key_length = 32
-check_length = 4
+check_length = 8
 
-evesdropper = False
+evesdropper = True
 
 a_bits = []
 a_bases = []
@@ -68,9 +68,9 @@ for i in range(key_length):
     # Eve: Recieve and send
     if evesdropper:
         e_recieve_basis = rng.choice([Basis.ZERO, Basis.PLUS])
-        e_send_basis = rng.choice([Basis.ZERO, Basis.PLUS])
+        #e_send_basis = rng.choice([Basis.ZERO, Basis.PLUS])
         e_recieved_bit = recieve(qc, e_recieve_basis)
-        send(qc, e_send_basis, e_recieved_bit)
+        send(qc, e_recieve_basis, e_recieved_bit)
     
     b_recieve_basis = rng.choice([Basis.ZERO, Basis.PLUS])
     b_recieved_bit = recieve(qc, b_recieve_basis)
