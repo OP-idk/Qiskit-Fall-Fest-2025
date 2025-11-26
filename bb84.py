@@ -10,7 +10,7 @@ import random as rng
 key_length = 32
 check_length = 4
 
-evesdropper = True
+evesdropper = False
 
 a_bits = []
 a_bases = []
@@ -87,9 +87,9 @@ for i in range(key_length):
         a_key.append(a_bits[i])
         b_key.append(b_bits[i])
 
-print("")
-print("Alice's Key: " + str(a_key))
-print("Bob's key:   " + str(b_key))
+#print("")
+#print("Alice's Key: " + str(a_key))
+#print("Bob's key:   " + str(b_key))
 
 result_msg = "Key Valid!"
 # Check resulting key is a decent length
@@ -101,4 +101,11 @@ else:
         if a_key[i] != b_key[i]:
             result_msg = "Key Invalid: noise or evesdropper detected"
 
+a_key = a_key[check_length:]
+b_key = b_key[check_length:]
+
 print(result_msg)
+print("")
+print("Alice's Final Key: " + str(a_key))
+print("Bob's Final key:   " + str(b_key))
+
