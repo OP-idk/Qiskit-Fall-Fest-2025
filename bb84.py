@@ -87,9 +87,9 @@ for i in range(key_length):
         a_key.append(a_bits[i])
         b_key.append(b_bits[i])
 
-#print("")
-#print("Alice's Key: " + str(a_key))
-#print("Bob's key:   " + str(b_key))
+print("")
+print("Alice's Key: " + str(a_key))
+print("Bob's key:   " + str(b_key))
 
 result_msg = "Key Valid!"
 # Check resulting key is a decent length
